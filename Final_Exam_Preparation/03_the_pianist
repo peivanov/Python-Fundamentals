@@ -1,0 +1,54 @@
+n_pieces = int(input())
+
+pieces = {}
+
+for n in range(n_pieces):
+    line = input().split("|")
+    piece = line[0]
+    composer = line[1]
+    key = line[2]
+    pieces[piece] = {'composer': composer, 'key': key}
+
+text = input()
+
+while not text == "Stop":
+    data = text.split("|")
+    action = data[0]
+    piece = data[1]
+
+    if action == "Add":
+        composer = data[2]
+        key = data[3]
+        if piece in pieces:
+            print(f"{piece} is already in the collection!")
+        else:
+            #добавяне допълнителни неща в речника
+            pieces[piece] = {'composer': composer, 'key': key}
+            print(f"{piece} by {composer} in {key} added to the collection!")
+
+    elif action == "Remove":
+        if piece in pieces:
+            pieces.pop(piece)
+            print(f"Successfully removed {piece}!")
+        else:
+            print(f"Invalid operation! {piece} does not exist in the collection.")
+
+    elif action == "ChangeKey":
+        if piece in pieces:
+            new_key = data[2]
+            #размяна на ключа с нов ключ
+            pieces[piece]['key'] = new_key
+            print(f"Changed the key of {piece} to {new_key}!")
+        else:
+            print(f"Invalid operation! {piece} does not exist in the collection.")
+
+    text = input()
+
+#сортирай ги първо по piece, а после по composer
+#речника се получава {piece: [key, composer]}
+
+sorted_pieces = sorted(pieces.items(), key=lambda tkvp: (tkvp[0], tkvp[1]['composer']))
+
+for piece, data in sorted_pieces:
+    print(f"{piece} -> Composer: {data['composer']}, Key: {data['key']}")
+
