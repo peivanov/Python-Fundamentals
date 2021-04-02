@@ -1,0 +1,43 @@
+data = {'a': 1, 'b': 2, 'c': 3}
+
+print(data.keys())
+print(data.values())
+
+for key in data:
+    print(data[key])    #1 2 3 - on new row
+    print(f"key - {key}, val - {data[key]")
+          #key - a, val - 1
+          #key - b, val - 2
+          #key - c, val - 3
+for key in data.items():
+    print(key[0], key[1])
+    #а 1
+    #b 2
+    #c 3
+for key, value in data.items():
+    print(key, value)
+    #а 1
+    #b 2
+    #c 3
+
+alph = {'a': 1, 'b': 2, 'c': 3}
+beth = alph.copy()  #копира речника за да не гледа към 1 място в паметта
+#alph.clear()   #изтрива всичко в речника
+
+#добавяне на ключ в речника
+beth['d'] = 4
+
+#връща стойността срещу ключа
+beth.pop('a')   # 1
+
+#смяна на името на ключ
+beth["test"] = beth.pop("a")
+
+#премахва последния ключ и неговата стойност
+beth.popitem()
+
+print(sorted(beth, reverse=True))   #сортира речинка отзад напред
+
+#сортиране по value, а не по key
+print(sorted(alph.items(), key=lambda kvp: kvp[1]))
+#kvp[0] - сортира по key, kvp[1] - сортира по value
