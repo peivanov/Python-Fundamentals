@@ -1,0 +1,9 @@
+line = input()
+
+encrypted = []
+
+for char in line:
+    char = ord(char) + 3
+    encrypted.append(chr(char))
+
+print(''.join(encrypted))
