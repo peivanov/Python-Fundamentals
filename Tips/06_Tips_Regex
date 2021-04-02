@@ -1,0 +1,13 @@
+import re
+
+text = "The rain in Spain"
+
+#изважда лист навсякъдет окъдето има "ai"
+print(re.findall("ai", text))
+
+#връща позицията на първия match на "\s" - whitespace
+x = re.search("\s", text)
+print("Position: ", x.start())
+
+
+#?<=  - виж дали има \s - white space(примерно) отпред
