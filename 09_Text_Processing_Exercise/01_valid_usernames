@@ -1,0 +1,8 @@
+line = input().split(", ")
+
+for word in line:
+    if 3 < len(word) < 16:
+        if "_" in word or "-" in word or word.isalnum():
+            print(word)
+
+#isalnum - проверява дали са само числа и букви
