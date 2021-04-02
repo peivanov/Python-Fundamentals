@@ -1,0 +1,9 @@
+line = input()
+
+#emojis = [f"{line[index]}{line[index+1]}"for index in range(0, len(line)) if line[index] == ":"]
+
+for index in range(0, len(line)):
+    if line[index] == ":":
+        print(line[index] + line[index+1])
+
+# print("\n".join(emojis))
