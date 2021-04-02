@@ -1,0 +1,25 @@
+n = int(input())
+
+registered = {}
+
+for i in range(n):
+    line = input()
+    text = line.split()
+    action = text[0]
+    name = text[1]
+
+    if action == "register":
+        if name not in registered:
+            registered[name] = text[2]
+            print(f"{name} registered {registered[name]} successfully")
+        else:
+            print(f"ERROR: already registered with plate number {registered[name]}")
+    elif action == "unregister":
+        if name not in registered:
+            print(f"ERROR: user {name} not found")
+        else:
+            print(f"{name} unregistered successfully")
+            registered.pop(name)
+
+for key, value in registered.items():
+    print(f"{key} => {value}")
