@@ -1,0 +1,12 @@
+data = input()
+
+dictionary = {}
+
+for char in data:
+    if not char == " ":
+        if not char in dictionary:
+            dictionary[char] = 0
+        dictionary[char] += 1
+
+for key, value in dictionary.items():
+    print(f"{key} -> {value}")
