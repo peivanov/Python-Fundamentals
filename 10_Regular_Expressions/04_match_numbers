@@ -1,0 +1,11 @@
+import re
+
+text = input()
+
+#(?<=\s) - дали има whitespace
+#(^|(?<=\s)) - или започва с началото на реда или има празно място
+#($|(?=\s)) - дали завършва стринга или има празно място
+pattern = r"(^|(?<=\s))-?\d+(\.\d+)?($|(?=\s))"
+
+matches = [obj.group() for obj in re.finditer(pattern, text)]
+print(' '.join(matches))
