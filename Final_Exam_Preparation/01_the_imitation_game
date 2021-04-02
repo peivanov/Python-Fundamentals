@@ -1,0 +1,28 @@
+message = input()
+instructions = input()
+
+while not instructions == "Decode":
+    instruction = instructions.split("|")
+    action = instruction[0]
+
+    if action == "Move":
+        n = int(instruction[1])
+        letters_to_move = message[:n]
+        left_part = message[n:]
+        message = left_part + letters_to_move
+
+    elif action == "Insert":
+        index = int(instruction[1])
+        value = instruction[2]
+        left_side = message[:index]
+        right_side = message[index:]
+        message = left_side + str(value) + right_side
+
+    elif action == "ChangeAll":
+        substring = instruction[1]
+        replacement = instruction[2]
+        message = message.replace(substring, replacement)
+
+    instructions = input()
+
+print(f"The decrypted message is: {message}")
