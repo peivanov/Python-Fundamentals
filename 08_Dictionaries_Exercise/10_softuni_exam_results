@@ -1,0 +1,34 @@
+line = input()
+
+results = {}
+languages = {}
+
+
+while not line == "exam finished":
+    text = line.split("-")
+    name = text[0]
+
+    if name not in results:
+        results[name] = int(text[2])
+
+    if not text[1] == "banned":
+        if text[1] not in languages:
+            languages[text[1]] = 1
+        elif text[1] in languages:
+            languages[text[1]] += 1
+
+    if text[1] == "banned":
+        results.pop(name)
+
+    line = input()
+
+sorted_results = sorted(results.items(), key=lambda kvp: (-kvp[1], kvp[0]))
+
+print("Results:")
+for key, value in sorted_results:
+    print(f"{key} | {value}")
+print("Submissions:")
+
+sorted_languages = sorted(languages.items(), key=lambda kvp: (-kvp[1], kvp[0]))
+for key, value in sorted_languages:
+    print(f"{key} - {value}")
