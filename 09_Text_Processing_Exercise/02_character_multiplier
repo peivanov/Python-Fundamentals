@@ -1,0 +1,30 @@
+# line = input().split()
+#
+# line.sort(key=lambda x: len(x))
+# result = 0
+#
+# for i in range(len(line[0])):
+#     result += ord(line[0][i]) * ord(line[1][i])
+#
+# remainder = sum([ord(i) for i in line[1][len(line[0]):]])
+#
+# print(f"{result + remainder}")
+
+
+a, b = input().split(" ")
+
+result = 0
+if len(a) == len(b):
+    for i in range(len(a)):
+        result += ord(a[i]) * ord(b[i])
+elif len(a) < len(b):
+    for i in range(len(a)):
+        result += ord(a[i]) * ord(b[i])
+    for i in range(len(a), len(b)):
+        result += ord(b[i])
+elif len(a) > len(b):
+    for i in range(len(b)):
+        result += ord(b[i]) * ord(a[i])
+    for i in range(len(b), len(a)):
+        result += ord(a[i])
+print(result)
