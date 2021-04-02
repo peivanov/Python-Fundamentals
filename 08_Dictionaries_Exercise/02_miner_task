@@ -1,0 +1,16 @@
+data = input()
+
+dictionary = {}
+
+while not data == "stop":
+    resource = data
+    quantity = int(input())
+    if not resource in dictionary:
+        dictionary[resource] = quantity
+    else:
+        dictionary[resource] += quantity
+
+    data = input()
+
+for key, value in dictionary.items():
+    print(f"{key} -> {value}")
