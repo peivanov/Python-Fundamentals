@@ -1,0 +1,18 @@
+def convert_to_int(el):
+    return int(el)
+
+nums_as_strings = ["1", "2", "3"]
+# numbers = [int(el) for el in nums_as_strings]
+# numbers = [convert_to_int(el) for el in nums_as_strings]
+# numbers = list(map(int, nums_as_strings)) #мапни всеки елемент от листа към int и направи лист
+numbers = list(map(lambda el: int(el), nums_as_strings))
+#map - вади елемент по елемент от листа
+# lambda x: int(x)
+print(numbers)
+
+#-------------------------------------------
+nums = [1, 2, 3]
+
+# evens = [el for el in numbers if el % 2 == 0]
+evens = list(filter(lambda x: x%2==0, nums))
+print(evens)
