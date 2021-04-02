@@ -1,0 +1,15 @@
+import re
+
+line = input()
+
+pattern = r"\bw{3}\.[a-zA-Z0-9-]+(\.[a-z]+)+"
+valids = []
+
+while line:
+    valid_sites = [el.group() for el in re.finditer(pattern, line)]
+    if valid_sites:
+        valids.extend(valid_sites)
+    line = input()
+
+print(*valids, sep="\n")
+
