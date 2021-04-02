@@ -1,0 +1,7 @@
+" hello ".split()   #"hello"
+
+txt = "I like water water water."
+print(txt.replace("water", "banana", 2))
+
+#set - връща само уникални символи
+print(set("AABBTT%%@@")) #ABT%@
