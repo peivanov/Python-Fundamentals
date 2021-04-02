@@ -1,0 +1,89 @@
+data = input()
+
+key_materials = {"shards": "Shadownmourne", "fragments": "Valanyr", "motes": "Dragonwrath"}
+items = {"shards": 0, "fragments": 0, "motes": 0}
+junk = {}
+
+is_obtained = False
+
+while not is_obtained:
+    split_data = data.split()
+
+    for index in range(0, len(split_data), 2):
+
+        if is_obtained:
+            break
+
+        quantity = int(split_data[index])
+        material = split_data[index + 1].lower()
+
+        if material in items:
+            items[material] += quantity
+        else:
+            if material not in junk:
+                junk[material] = quantity
+            else:
+                junk[material] += quantity
+
+        for material, quantity in items.items():
+            if quantity >= 250:
+                is_obtained = True
+                items[material] -= 250
+                print(f"{key_materials[material]} obtained!")
+                break
+
+    if is_obtained:
+        break
+
+    data = input()
+
+#sort by quantity in descending order, then by name in ascending order
+sorted_items = sorted(items.items(), key=lambda kvp: (-kvp[1], kvp[0]))
+
+for key, value in sorted_items:
+    print(f"{key}: {value}")
+
+sort_junk = sorted(junk.items(), key=lambda kvp: kvp[0])
+for key, value in sort_junk:
+    print(f"{key}: {value}")
+
+
+
+# materials = input().lower().split()
+# key_materials = {'shards': 0, 'fragments': 0, 'motes': 0}
+# junk_materials = {}
+# flag = False
+#
+# while True:
+#     for i in range(0, len(materials), 2):
+#         key = materials[i + 1]
+#         value = int(materials[i])
+#         if key in key_materials:
+#             key_materials[key] += value
+#         elif key in junk_materials:
+#             junk_materials[key] += value
+#         elif key not in key_materials and key in ('shards', 'fragments', 'motes'):
+#             key_materials[key] = value
+#         else:
+#             junk_materials[key] = value
+#         if key in ('shards', 'fragments', 'motes') and key_materials[key] >= 250:
+#             key_materials[key] -= 250
+#             if key == 'shards':
+#                 print('Shadowmourne obtained!')
+#             elif key == 'fragments':
+#                 print('Valanyr obtained!')
+#             elif key == 'motes':
+#                 print('Dragonwrath obtained!')
+#             flag = True
+#             break
+#     if flag:
+#         break
+#     materials = input().lower().split()
+#
+# key_materials = dict(sorted(key_materials.items(), key=lambda s: (-s[1], s[0])))
+# junk_materials = dict(sorted(junk_materials.items(), key = lambda s: s[0]))
+#
+# for key, value in key_materials.items():
+#     print(f'{key}: {value}')
+# for key, value in junk_materials.items():
+#     print(f'{key}: {value}')
