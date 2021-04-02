@@ -1,0 +1,8 @@
+words = input().split()
+
+result = ""
+
+for letter in words:
+    result += letter * len(letter)
+
+print(result)
