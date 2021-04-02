@@ -1,0 +1,7 @@
+text = input().split(", ")
+line = input()
+
+for word in text:
+    line = line.replace(word, "*" * len(word))
+
+print(line)
