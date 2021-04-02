@@ -1,0 +1,23 @@
+# line = input()
+#
+# index = 0
+#
+# while index < len(line) - 1:
+#     if line[index] == line[index + 1]:
+#         element_to_replace = f"{line[index]}{line[index + 1]}"
+#         line = line.replace(element_to_replace, line[index])
+#         index = 0
+#     else:
+#         index += 1
+#
+# print(line)
+
+
+line = input()
+
+same = None
+
+for ch in line:
+    if not ch == same:
+        print(ch, end='')
+        same = ch
