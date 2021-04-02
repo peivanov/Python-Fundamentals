@@ -1,0 +1,52 @@
+n_lines = int(input())
+
+plants = {}
+
+for n in range(n_lines):
+    plant, rarity = input().split("<->")
+    plants[plant] = {'rarity': int(rarity), 'ratings': []}
+
+text = input()
+
+while not text == "Exhibition":
+    action, data = text.split(": ")
+
+    if action == "Rate":
+        plant, rating = data.split(" - ")
+        rating = int(rating)
+        if plant in plants:
+            plants[plant]['ratings'].append(rating)
+        else:
+            print("error")
+
+    elif action == "Update":
+        plant, new_rarity = data.split(" - ")
+        if plant in plants:
+            plants[plant]['rarity'] = int(new_rarity)
+        else:
+            print("error")
+
+    elif action == "Reset":
+        plant = data
+        if plant in plants:
+            plants[plant]['ratings'].clear()
+        else:
+            print("error")
+
+    else:
+        print("error")
+
+    text = input()
+
+for plant, value in plants.items():
+    if value['ratings']:
+        avg_rating = sum(value['ratings']) / len(value['ratings'])
+    else:
+        avg_rating = 0
+    plants[plant]['avg'] = avg_rating
+
+sorted_plants = sorted(plants.items(), key=lambda kvp: (-kvp[1]['rarity'], -kvp[1]['avg']))
+
+print("Plants for the exhibition:")
+for plant, data in sorted_plants:
+    print(f"- {plant}; Rarity: {data['rarity']}; Rating: {data['avg']:.2f}")
