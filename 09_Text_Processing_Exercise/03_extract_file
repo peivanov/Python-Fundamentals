@@ -1,0 +1,6 @@
+line = input().split(chr(92))
+
+file_name, file_extension = line[3].split(".")
+
+print(f"File name: {file_name}")
+print(f"File extension: {file_extension}")
