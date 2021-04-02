@@ -1,0 +1,47 @@
+key = input()
+
+line = input()
+
+while not line == "Generate":
+    command = line.split(">>>")
+    action = command[0]
+
+    if action == "Contains":
+        data = command[1]
+        if data in key:
+            print(f"{key} contains {data}")
+        else:
+            print("Substring not found!")
+
+    elif action == "Flip":
+        up_low = command[1]
+        start_index = int(command[2])
+        end_index = int(command[3])
+        if 0 <= start_index < len(key) and 0 <= end_index < len(key):
+            if up_low == "Upper":
+                up_index = ""
+                for index in key[start_index:end_index]:
+                    up_index += index.capitalize()
+                key = key[:start_index] + up_index + key[end_index:]
+                print(key)
+            elif up_low == "Lower":
+                low_index = ""
+                for index in key[start_index:end_index]:
+                    low_index += index.lower()
+                key = key[:start_index] + low_index + key[end_index:]
+                print(key)
+        else:
+            print("Substring not found!")
+
+    elif action == "Slice":
+        start_index = int(command[1])
+        end_index = int(command[2])
+        if 0 <= start_index < len(key) and 0 <= end_index < len(key):
+            key = key[:start_index] + key[end_index:]
+            print(key)
+        else:
+            print("Substring not found!")
+
+    line = input()
+
+print(f"Your activation key is: {key}")
