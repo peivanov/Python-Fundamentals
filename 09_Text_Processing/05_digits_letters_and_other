@@ -1,0 +1,17 @@
+line = input()
+
+digits = []
+chars = []
+oth_chars = []
+
+for char in line:
+    if char.isdigit():
+        digits.append(char)
+    elif char.isalpha():
+        chars.append(char)
+    else:
+        oth_chars.append(char)
+
+print(''.join(digits))
+print(''.join(chars))
+print(''.join(oth_chars))
