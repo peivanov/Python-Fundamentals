@@ -1,0 +1,9 @@
+import re
+
+line = input()
+
+pattern = r"((?<=^_)|(?<=\s_))([a-zA-Z]+)\b"
+
+match = [obj.group() for obj in re.finditer(pattern, line)]
+
+print(",".join(match))
