@@ -1,0 +1,20 @@
+data = input()
+
+companies = {}
+
+while not data == "End":
+    name, employee_id = data.split(" -> ")
+
+    if name not in companies:
+        companies[name] = []
+    if employee_id not in companies[name]:
+        companies[name].append(employee_id)
+
+    data = input()
+
+sorted_companies = sorted(companies.items(), key=lambda kvp: kvp[0])
+
+for key, value in sorted_companies:
+    print(key)
+    for v in value:
+        print(f"-- {v}")
